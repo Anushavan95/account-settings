@@ -11,6 +11,7 @@ import {
   Button,
 } from '@mui/material';
 import { settingsConfig, type AccountSettingsValues } from '../../utils/types';
+import CustomButton from '../ui/button';
 
 interface SettingsFormProps {
   values: AccountSettingsValues;
@@ -22,7 +23,6 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ values, onSave }) =>
     defaultValues: values,
   });
 
-  // 🔹 Reset form whenever `values` prop changes
   useEffect(() => {
     reset(values);
   }, [values, reset]);
@@ -124,12 +124,16 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ values, onSave }) =>
             );
         }
       })}
-      <Button variant="contained" color="primary" type="submit" sx={{ mt: 2 }}>
+      <CustomButton
+        variant="contained"
+        sx={{ backgroundColor: 'secondary.main', color: 'secondary.contrastText', mt: 2 }}
+        type="submit"
+      >
         Save
-      </Button>
-      <Button variant="outlined" sx={{ mt: 2, ml: 1 }} onClick={() => reset(values)}>
+      </CustomButton>
+      <CustomButton variant="outlined" sx={{ mt: 2, ml: 1 }} onClick={() => reset(values)}>
         Reset
-      </Button>
+      </CustomButton>
     </form>
   );
 };
