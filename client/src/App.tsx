@@ -1,26 +1,15 @@
-import React, { Suspense, lazy } from 'react';
-import { CircularProgress, Box } from '@mui/material';
-// import { ErrorBoundary } from './ErrorBoundary';
+import { lazy } from 'react';
+import { ErrorBoundary } from './hoc/ErrorBoundry/ErrorBoundry';
+import { SuspensePage } from './hoc/SuspensePage/SuspensePage';
 const Home = lazy(() => import('@/pages/home'));
-const App = () => {
+
+const App: React.FC = () => {
   return (
-    // <ErrorBoundary
-    //   fallback={
-    //     <Box p={2} textAlign="center" color="error.main">
-    //       Something went wrong while loading the page.
-    //     </Box>
-    //   }
-    // >
-    <Suspense
-      fallback={
-        <Box display="flex" justifyContent="center" mt={4}>
-          <CircularProgress />
-        </Box>
-      }
-    >
-      <Home />
-    </Suspense>
-    // </ErrorBoundary>
+    <ErrorBoundary>
+      <SuspensePage>
+        <Home />
+      </SuspensePage>
+    </ErrorBoundary>
   );
 };
 
