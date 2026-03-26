@@ -3,16 +3,12 @@
     {
       "id": 1,
       "name": "John Doe",
-      "settings": {
-
-      }
+      "settings": {}
     },
     {
       "id": 2,
       "name": "Jane Smith",
-      "settings": {
-
-      }
+      "settings": {}
     },
     {
       "id": 3,
