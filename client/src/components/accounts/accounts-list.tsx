@@ -11,15 +11,18 @@ interface AccountsListProps {
 export const AccountsList: React.FC<AccountsListProps> = ({ accounts, selectedId, onSelect }) => {
   return (
     <List>
-      {accounts.map((acc) => (
-        <ListItemButton
-          key={acc.id}
-          selected={acc.id === selectedId}
-          onClick={() => onSelect(acc.id)}
-        >
-          <ListItemText primary={acc.name} />
-        </ListItemButton>
-      ))}
+      {accounts &&
+        accounts.map((acc) => {
+          return (
+            <ListItemButton
+              key={acc.id}
+              selected={acc.id === selectedId}
+              onClick={() => onSelect(acc.id)}
+            >
+              <ListItemText primary={acc.name} />
+            </ListItemButton>
+          );
+        })}
     </List>
   );
 };

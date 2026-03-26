@@ -2,7 +2,6 @@ const js = require('@eslint/js');
 const globals = require('globals');
 const react = require('eslint-plugin-react');
 const reactHooks = require('eslint-plugin-react-hooks');
-const reactRefresh = require('eslint-plugin-react-refresh');
 const tsPlugin = require('@typescript-eslint/eslint-plugin');
 const { defineConfig, globalIgnores } = require('eslint/config');
 

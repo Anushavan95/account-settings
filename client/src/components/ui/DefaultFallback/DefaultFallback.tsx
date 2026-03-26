@@ -15,9 +15,7 @@ export const DefaultFallback = ({ onRetry }: FallbackProps) => {
         gap: 2,
       }}
     >
-      <DynamicTypography variant="h6" colorVariant="error">
-        Something went wrong
-      </DynamicTypography>
+      <DynamicTypography variant="h6">Something went wrong</DynamicTypography>
 
       <CustomButton variant="contained" color="primary" onClick={onRetry}>
         Try again

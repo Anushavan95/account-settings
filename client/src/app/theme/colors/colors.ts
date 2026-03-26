@@ -1,5 +1,3 @@
-import { red } from '@mui/material/colors';
-
 export const Colors = {
   primary: {
     main: '#1877F2',

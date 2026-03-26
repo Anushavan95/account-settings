@@ -1,4 +1,4 @@
-import type { SettingDefinition } from '@/utils/types';
+import { settingsConfig, type AccountSettingsValues, type SettingDefinition } from '@/utils/types';
 import { TextField, Switch, FormControlLabel, Checkbox, FormGroup, MenuItem } from '@mui/material';
 import type React from 'react';
 import type { ControllerRenderProps } from 'react-hook-form';
@@ -12,43 +12,46 @@ type FieldRenderer = (
 export const fieldRenderers: Record<string, FieldRenderer> = {
   switch: (field, setting) => (
     <FormControlLabel
-      control={<Switch {...field} checked={Boolean(field.value)} />}
+      control={
+        <Switch checked={Boolean(field.value)} onChange={(e) => field.onChange(e.target.checked)} />
+      }
       label={setting.label}
+      sx={{ display: 'block', marginY: 1 }}
     />
   ),
-
   text: (field, setting, error) => (
     <TextField
       {...field}
+      value={field.value ?? ''}
       label={setting.label}
       fullWidth
       margin="normal"
       error={!!error}
-      helperText={error}
+      helperText={error || ' '}
     />
   ),
-
   number: (field, setting, error) => (
     <TextField
       {...field}
-      label={setting.label}
+      value={field.value ?? ''}
       type="number"
+      label={setting.label}
       fullWidth
       margin="normal"
       error={!!error}
-      helperText={error}
+      helperText={error || ' '}
     />
   ),
-
   select: (field, setting, error) => (
     <TextField
       {...field}
       select
+      value={field.value ?? ''}
+      label={setting.label}
       fullWidth
       margin="normal"
-      label={setting.label}
       error={!!error}
-      helperText={error}
+      helperText={error || ' '}
     >
       {setting.options?.map((opt) => (
         <MenuItem key={opt} value={opt}>
@@ -57,7 +60,6 @@ export const fieldRenderers: Record<string, FieldRenderer> = {
       ))}
     </TextField>
   ),
-
   multiselect: (field, setting, error) => (
     <FormGroup>
       {setting.options?.map((opt) => (
@@ -75,9 +77,23 @@ export const fieldRenderers: Record<string, FieldRenderer> = {
             />
           }
           label={opt}
+          sx={{ display: 'block', marginY: 0.5 }}
         />
       ))}
-      {error && <span style={{ color: 'red', fontSize: 12 }}>{error}</span>}
+      <span style={{ color: 'red', fontSize: 12, minHeight: 20 }}>{error || ' '}</span>
     </FormGroup>
   ),
+};
+export const getDefaultValues = (): AccountSettingsValues => {
+  const defaults: any = {};
+  settingsConfig.forEach((setting) => {
+    if (setting.type === 'multiselect') {
+      defaults[setting.id] = [];
+    } else if (setting.type === 'switch') {
+      defaults[setting.id] = false;
+    } else {
+      defaults[setting.id] = '';
+    }
+  });
+  return defaults;
 };

@@ -48,7 +48,6 @@ export const settingsConfig: SettingDefinition[] = [
       },
     },
   },
-
   {
     id: 'dailyEmailLimit',
     label: 'Daily Email Limit',
@@ -74,8 +73,5 @@ export const settingsConfig: SettingDefinition[] = [
     label: 'Allowed Channels',
     type: 'multiselect',
     options: ['Email', 'SMS', 'Push'],
-    rules: {
-      validate: (v: string[]) => v?.length > 0 || 'Select at least one channel',
-    },
   },
 ];
