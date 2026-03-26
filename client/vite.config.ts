@@ -5,8 +5,10 @@ export default defineConfig({
   plugins: [
     react({
       jsxImportSource: '@emotion/react',
+      jsxRuntime: 'automatic',
     }),
   ],
+
   server: {
     port: 3000,
     proxy: {
