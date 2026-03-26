@@ -8,9 +8,9 @@ Frontend
 Built with React, TypeScript, Material UI (MUI), and React Hook Form.
 Provides a dynamic form system to manage settings per account.
 Each account has its own configurable settings, stored locally or via API.
-Located in the /frontend folder.
+Located in the /client folder.
 See /client/README.md for setup and run instructions.
-Backend 
+Backend
 Built with Node.js and Express, db.js
 Provides API endpoints for accounts and account-specific settings.
 Data storage can be in-memory, local JSON (mock), or a simple database.
