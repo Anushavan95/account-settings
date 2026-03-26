@@ -1,0 +1,28 @@
+{
+  "accounts": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "settings": {
+
+      }
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "settings": {
+
+      }
+    },
+    {
+      "id": 3,
+      "name": "Wayne Rooney",
+      "settings": {}
+    },
+    {
+      "id": 4,
+      "name": "Lala Desire",
+      "settings": {}
+    }
+  ]
+}
